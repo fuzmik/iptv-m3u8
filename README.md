@@ -1,3 +1,5 @@
+shorten url tv.m3u8 https://shorturl.at/rLM8g
+
 ## :euro: Donation por PayPal
 
 ✅ 🇵🇹 Este projeto de IPTV gratuito foi projetado para economizar tempo e dinheiro, proporcionando uma experiência de streaming. Se achou este projeto e iniciativa útil... considere fazer uma doação através do PayPal. Qualquer contribuição, por menor que seja, é muito apreciada e ajuda a manter este projeto que já perdura a mais de uma década. Obrigado pelo seu apoio!
