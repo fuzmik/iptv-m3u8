@@ -1,4 +1,5 @@
 shorten url tv.m3u8 https://shorturl.at/rLM8g
+shorten url stream.m3u8 https://shorturl.at/fv17E
 
 ## :euro: Donation por PayPal
 
