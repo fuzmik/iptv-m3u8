@@ -1,34 +1,54 @@
 #!/bin/bash
 
-# Eingabedatei (M3U)
-input_file="Freetv.m3u"
-# Ausgabedatei (XMLTV)
-output_file="epg.xmltv"
+# Input files (M3U)
+input_file1="FreeStreaming.m3u"
+input_file2="Freetv.m3u"
+
+# Output file (XMLTV)
+output_file="epg-stream.xmltv"
 
 # XMLTV Header
 echo '<?xml version="1.0" encoding="UTF-8"?>' > "$output_file"
 echo '<tv>' >> "$output_file"
 
-# EPG aus M3U auslesen
+# Read and combine EPG data from M3U files into XMLTV format
 while IFS= read -r line; do
     if [[ $line == *"#EXTINF:"* ]]; then
-        # Extrahiere den Sendernamen und die EPG-Daten
+        # Extract channel name and EPG data
         channel_name=$(echo "$line" | sed 's/#EXTINF:-1,//;s/,.*//')
         epg_data=$(echo "$line" | sed 's/#EXTINF:-1,[^,]*,//')
 
-        # Füge den Channel zur XMLTV-Datei hinzu
+        # Add the Channel to XMLTV file
         echo "  <channel id=\"$channel_name\">" >> "$output_file"
         echo "    <display-name>$channel_name</display-name>" >> "$output_file"
         echo "  </channel>" >> "$output_file"
 
-        # Füge die EPG-Daten hinzu
+        # Add EPG data
         echo "  <programme start=\"$(date +%Y%m%d%H%M%S) +0000\" stop=\"$(date +%Y%m%d%H%M%S -d '+1 hour') +0000\" channel=\"$channel_name\">" >> "$output_file"
         echo "    <title>$epg_data</title>" >> "$output_file"
         echo "  </programme>" >> "$output_file"
     fi
-done < "$input_file"
+done < "$input_file1" && {
+    while IFS= read -r line; do
+        if [[ $line == *"#EXTINF:"* ]]; then
+            # Extract channel name and EPG data
+            channel_name=$(echo "$line" | sed 's/#EXTINF:-1,//;s/,.*//')
+            epg_data=$(echo "$line" | sed 's/#EXTINF:-1,[^,]*,//')
+
+            # Add the Channel to XMLTV file
+            echo "  <channel id=\"$channel_name\">" >> "$output_file"
+            echo "    <display-name>$channel_name</display-name>" >> "$output_file"
+            echo "  </channel>" >> "$output_file"
+
+            # Add EPG data
+            echo "  <programme start=\"$(date +%Y%m%d%H%M%S) +0000\" stop=\"$(date +%Y%m%d%H%M%S -d '+1 hour') +0000\" channel=\"$channel_name\">" >> "$output_file"
+            echo "    <title>$epg_data</title>" >> "$output_file"
+            echo "  </programme>" >> "$output_file"
+        fi
+    done < "$input_file2"
+}
 
 # XMLTV Footer
 echo '</tv>' >> "$output_file"
 
-echo "EPG-Daten wurden erfolgreich in $output_file gespeichert."
+echo "EPG data was successfully saved to $output_file."
