@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Input files (M3U)
-input_file1="FreeStreaming.m3u"
-input_file2="Freetv.m3u"
+input_file1="stream.m3u8"
+input_file2="tv.m3u8"
 
 # Output file (XMLTV)
-output_file="epg-stream.xmltv"
+output_file="epg-stream.xml"
 
 # XMLTV Header
 echo '<?xml version="1.0" encoding="UTF-8"?>' > "$output_file"
