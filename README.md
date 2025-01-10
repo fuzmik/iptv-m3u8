@@ -60,7 +60,11 @@ shorten url stream.m3u8 https://shorturl.at/fv17E
 
 ## ✅ Lista Inspiration Free TV (Basta copiar e colar)
 ```bash
-https://bit.ly/41B7IFk
+🛡 ɪɴsᴘɪ[я]ᴀᴛɪᴏɴ ғʀᴇᴇᴛv (ᴍ3υ)
+🔗 https://bit.ly/InspirationFreetv
+OU
+🛡 ᴏɴʟʏ ғʀᴇᴇ sᴛʀᴇᴀᴍıɴɢ (ᴍ3υ)
+🔗 https://bit.ly/FreeStreamingtv
 ```
 
 ---
